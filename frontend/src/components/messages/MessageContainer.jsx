@@ -4,13 +4,13 @@ import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import { TiMessages } from "react-icons/ti";
 import { useAuthContext } from "../../context/AuthContext";
-
+import { LuPanelLeftClose } from "react-icons/lu";
 const MessageContainer = () => {
 
   const {selectedConversation,setSelectedConversation} =useConversation()
-  useEffect(()=>{
-       return()=>setSelectedConversation(null)
-  },[setSelectedConversation]);
+  // useEffect(()=>{
+  //      return()=>setSelectedConversation(null)
+  // },[setSelectedConversation]);
 
   return (
     <div className='md:min-w-[450px] flex flex-col'>
@@ -19,9 +19,12 @@ const MessageContainer = () => {
          ):(
         <>
            {/*Header*/}
-           <div className='bg-slate-500 px-4 py-2 mb-2'>
+           <div className='bg-slate-500 px-4 py-2 mb-2 flex justify-between'>
+            <div>
             <span className='label-text'>To:</span>{" "}
             <span className='text-gray-900 font-bold'>{selectedConversation.fullName}</span>
+            </div>
+            <button onClick={() => setSelectedConversation(null)}><LuPanelLeftClose /></button>
            </div>
 
             <Messages/>  
